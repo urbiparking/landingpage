@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Urbiparking - Encuentra tu Estacionamiento</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      background-color: #ffffff;
+      color: #222222;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #1B4F26;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      color: #ffffff;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .content-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .main-section {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      padding: 1.5rem;
+      overflow: hidden;
+    }
+
+    .hero {
+      width: 65%;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero img {
+      max-width: 180px;
+      height: auto;
+      margin: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: #444;
+      max-width: 500px;
+      margin-top: 1rem;
+    }
+
+    .form-section {
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 35%;
+    }
+
+    .form-section .branding {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-section .branding img {
+      max-width: 140px;
+      display: block;
+      margin: 0 auto 0.5rem auto;
+    }
+
+    .form-section .branding h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      color: #333;
+    }
+
+    form {
+      width: 100%;
+      max-width: 320px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-top: 0.75rem;
+      font-weight: 600;
+    }
+
+    input {
+      padding: 0.5rem;
+      margin-top: 0.25rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .cta-button {
+      margin-top: 1.5rem;
+      padding: 0.75rem;
+      background-color: #2D823C;
+      color: #ffffff;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .cta-button:hover {
+      background-color: #3E9F4E;
+    }
+
+    footer {
+      background-color: #1B4F26;
+      color: #ffffff;
+      text-align: center;
+      padding: 0.75rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Urbiparking</h1>
+  </header>
+
+  <div class="content-wrapper">
+    <section class="main-section">
+      <div class="hero">
+        <div>
+          <img src="propuesta_urbiparking.png" alt="Proceso Urbiparking" style="max-width: 70%; height: auto;">
+        </div>
+        <p>
+          Urbiparking te conecta con personas que alquilan sus espacios libres. Evita el tráfico, reserva desde tu celular y paga en línea.
+        </p>
+      </div>
+
+      <div class="form-section">
+        <div class="branding">
+          <img src="logo-urbiparking.png" alt="Logo Urbiparking">
+          <h2>URBIPARKING</h2>
+        </div>
+        <form action="https://formsubmit.co/urbiparkinginnovacion@gmail.com" method="POST" onsubmit="enviarYMostrarGracias(event)">
+          <input type="hidden" name="_captcha" value="false">
+          <label for="nombre">Nombre completo*</label>
+          <input type="text" id="nombre" name="nombre" required>
+
+          <label for="email">Correo electrónico*</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono">
+
+          <button class="cta-button" type="submit">¡Quiero saber más!</button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2025 Urbiparking. Todos los derechos reservados.
+  </footer>
+
+  <script>
+    function enviarYMostrarGracias(event) {
+      const form = event.target;
+      event.preventDefault();
+
+      const formData = new FormData(form);
+
+      fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          const formSection = document.querySelector('.form-section');
+          formSection.innerHTML = `
+            <div style="text-align: center; padding-top: 1rem;">
+              <img src="gracias1.png" alt="Gracias" style="max-width: 250px; margin-bottom: 1rem;">
+              <h2 style="font-family: 'Inter', sans-serif;">¡Gracias por contactarnos!</h2>
+              <p style="font-family: 'Inter', sans-serif;">Nos pondremos en contacto contigo pronto.</p>
+            </div>
+          `;
+        } else {
+          alert("Ocurrió un error. Por favor, intenta nuevamente.");
+        }
+      }).catch(error => {
+        alert("No se pudo enviar el formulario. Intenta más tarde.");
+      });
+    }
+  </script>
+</body>
+</html>
