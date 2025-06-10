@@ -35,6 +35,58 @@
       flex: 1;
     }
 
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .preview-btn {
+      background: #222;
+      color: #fff;
+      border: none;
+      padding: 0.45rem 1.2rem;
+      border-radius: 5px;
+      font-weight: 600;
+      font-family: inherit;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.13);
+    }
+
+    .preview-btn:hover, .preview-btn:focus {
+      background: #FFD700;
+      color: #222;
+    }
+
+    .insta-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.2rem;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+
+    .insta-icon:hover, .insta-icon:focus {
+      background: #FFD700;
+    }
+
+    .insta-icon:hover svg rect,
+    .insta-icon:focus svg rect {
+      stroke: #FFD700;
+    }
+    .insta-icon:hover svg circle:first-of-type,
+    .insta-icon:focus svg circle:first-of-type {
+      stroke: #FFD700;
+    }
+    .insta-icon:hover svg circle:last-of-type,
+    .insta-icon:focus svg circle:last-of-type {
+      fill: #FFD700;
+      stroke: #FFD700;
+    }
+
     .content-wrapper {
       flex: 1;
       display: flex;
@@ -167,44 +219,6 @@
         box-shadow: 0 3px 15px rgba(0,0,0,0.14);
       }
     }
-
-    /* ---- NUEVOS ESTILOS HEADER ---- */
-    .header-nav {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-    }
-
-    .preview-btn {
-      background: #222;
-      color: #fff;
-      border: none;
-      padding: 0.45rem 1.2rem;
-      border-radius: 5px;
-      font-weight: 600;
-      font-family: inherit;
-      font-size: 1rem;
-      text-decoration: none;
-      transition: background 0.2s, box-shadow 0.2s;
-      box-shadow: 0 1px 5px rgba(0,0,0,0.13);
-    }
-
-    .preview-btn:hover, .preview-btn:focus {
-      background: #444;
-    }
-
-    .insta-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.2rem;
-      border-radius: 50%;
-      transition: background 0.2s;
-    }
-
-    .insta-icon:hover, .insta-icon:focus {
-      background: #e7e7e7;
-    }
   </style>
 </head>
 <body>
@@ -217,11 +231,12 @@
         class="preview-btn"
       >Previsualizar aplicación</a>
       <a 
-        href="https://www.instagram.com/urbiparking?igsh=Yjljazd6c2lvNG9v&utm_source=qr" 
+        href="https://www.instagram.com/urbiparking" 
         target="_blank" 
         class="insta-icon" 
         aria-label="Instagram Urbiparking"
       >
+        <!-- SVG Instagram Icon -->
         <svg width="26" height="26" viewBox="0 0 32 32" fill="none">
           <rect x="6" y="6" width="20" height="20" rx="6" fill="#fff" stroke="#222" stroke-width="2"/>
           <circle cx="16" cy="16" r="5.2" stroke="#222" stroke-width="2" fill="none"/>
